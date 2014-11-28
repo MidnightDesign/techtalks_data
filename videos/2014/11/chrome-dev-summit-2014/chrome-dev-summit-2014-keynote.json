@@ -1,0 +1,16 @@
+{
+    "id": "chrome-dev-summit-2014-keynote",
+    "name": "Chrome Dev Summit 2014 Keynote",
+    "url": "https://www.youtube.com/watch?v=lboyR-A1woU",
+    "speakers": ["fisher-darin"],
+    "tags": [
+        "chrome",
+        "keynote"
+    ],
+    "event": "chrome-dev-summit-2014",
+    "recorded_at": "2014-11-19T09:00",
+    "duration": "18m56s",
+    "uploaded_at": "2014-11-20",
+    "poster": "https://i.ytimg.com/vi/lboyR-A1woU/maxresdefault.jpg",
+    "lang": "en"
+}
