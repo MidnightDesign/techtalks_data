@@ -2,8 +2,13 @@
     "id": "google-io-2014-google-play-services-rocks",
     "name": "Google Play services Rocks!",
     "url": "https://www.youtube.com/watch?v=o1od_3vR9fI",
-    "speakers": ["hyttsten-magnus", "metcalf-adam"],
-    "tags": ["google-play-services"],
+    "speakers": [
+        "hyttsten-magnus",
+        "metcalf-adam"
+    ],
+    "tags": [
+        "google-play-services"
+    ],
     "event": "google-io-2014",
     "recorded_at": "2014-06-25T14:00",
     "duration": "39m30s",

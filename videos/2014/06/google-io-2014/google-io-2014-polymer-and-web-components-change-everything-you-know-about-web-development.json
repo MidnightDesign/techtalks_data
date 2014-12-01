@@ -2,7 +2,9 @@
     "id": "google-io-2014-polymer-and-web-components-change-everything-you-know-about-web-development",
     "name": "Polymer and Web Components change everything you know about Web development",
     "url": "https://www.youtube.com/watch?v=8OJ7ih8EE7s",
-    "speakers": ["bidelman-eric"],
+    "speakers": [
+        "bidelman-eric"
+    ],
     "tags": [
         "polymer",
         "web-component"
