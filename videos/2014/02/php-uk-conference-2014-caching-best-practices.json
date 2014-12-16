@@ -1,0 +1,16 @@
+{
+    "url": "https://www.youtube.com/watch?v=bsZQcbBcXuQ",
+    "name": "Caching Best Practices",
+    "event": "php-uk-conference-2014",
+    "speakers": [
+        "white-eli"
+    ],
+    "tags": [
+        "php"
+    ],
+    "recorded_at": "2014-02-21T14:00",
+    "uploaded_at": "2014-03-21",
+    "duration": "63m30s",
+    "poster": "https://i.ytimg.com/vi/bsZQcbBcXuQ/maxresdefault.jpg",
+    "id": "php-uk-conference-2014-caching-best-practices"
+}
