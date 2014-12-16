@@ -1,0 +1,17 @@
+{
+    "url": "https://www.youtube.com/watch?v=Jr8jAK86Uf0",
+    "name": "Writing Unit Tests Using PHPUnit",
+    "event": "php-uk-conference-2013",
+    "speakers": [
+        "verveer-harrie"
+    ],
+    "tags": [
+        "php",
+        "phpunit"
+    ],
+    "recorded_at": "2013-02-23T14:30",
+    "uploaded_at": "2014-04-29",
+    "duration": "51m59s",
+    "poster": "https://i.ytimg.com/vi/Jr8jAK86Uf0/maxresdefault.jpg",
+    "id": "php-uk-conference-2013-writing-unit-tests-using-phpunit"
+}
