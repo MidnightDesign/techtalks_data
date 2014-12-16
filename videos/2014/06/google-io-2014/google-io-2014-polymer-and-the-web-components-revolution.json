@@ -2,7 +2,9 @@
     "id": "google-io-2014-polymer-and-the-web-components-revolution",
     "name": "Polymer and the Web Components revolution",
     "url": "https://www.youtube.com/watch?v=yRbOSdAe_JU",
-    "speakers": ["mcnulty-matt"],
+    "speakers": [
+        "mcnulty-matt"
+    ],
     "tags": [
         "polymer",
         "web-component"

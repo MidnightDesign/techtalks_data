@@ -2,7 +2,10 @@
     "id": "google-io-2014-whats-new-in-android",
     "name": "What's new in Android",
     "url": "https://www.youtube.com/watch?v=3TtVsy98ces",
-    "speakers": ["haase-chet", "sandler-dan"],
+    "speakers": [
+        "haase-chet",
+        "sandler-dan"
+    ],
     "tags": [
         "android",
         "android-l"
