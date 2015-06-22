@@ -20,17 +20,23 @@ class VideoTest
      * @var EventLoader
      */
     private $eventLoader;
+    /**
+     * @var SpeakerLoader
+     */
+    private $speakerLoader;
 
     /**
      * Video constructor.
      *
      * @param Filesystem $fs
      * @param EventLoader $eventLoader
+     * @param SpeakerLoader $speakerLoader
      */
-    public function __construct(Filesystem $fs, EventLoader $eventLoader)
+    public function __construct(Filesystem $fs, EventLoader $eventLoader, SpeakerLoader $speakerLoader)
     {
         $this->fs = $fs;
         $this->eventLoader = $eventLoader;
+        $this->speakerLoader = $speakerLoader;
     }
 
     public function idsAreUnique(array $files)
@@ -61,6 +67,7 @@ class VideoTest
 
         $this->assertIdEqualsFilename($file);
         $this->assertEventExists($file);
+        $this->assertSpeakersExist($file);
     }
 
     /**
@@ -91,8 +98,18 @@ class VideoTest
     {
         $eventId = $file['data']['event'];
         PHPUnit_Framework_Assert::assertTrue(
-            $this->eventLoader->eventExists($eventId),
+            $this->eventLoader->exists($eventId),
             sprintf('The event %s referenced by %s does not exist.', $eventId, $file['path'])
         );
+    }
+
+    private function assertSpeakersExist(array $file)
+    {
+        foreach ($file['data']['speakers'] as $speakerId) {
+            PHPUnit_Framework_Assert::assertTrue(
+                $this->speakerLoader->exists($speakerId),
+                sprintf('The speaker %s referenced by %s does not exist.', $speakerId, $file['path'])
+            );
+        }
     }
 }

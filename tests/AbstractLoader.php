@@ -35,4 +35,19 @@ abstract class AbstractLoader
     }
 
     abstract protected function getDirectory();
+
+    /**
+     * @param string $id
+     * @return boolean
+     */
+    public function exists($id)
+    {
+        $files = $this->getFiles();
+        foreach ($files as $file) {
+            if ($file['filename'] === $id) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

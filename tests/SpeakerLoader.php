@@ -2,10 +2,10 @@
 
 namespace TechtalksTest;
 
-class EventLoader extends AbstractLoader
+class SpeakerLoader extends AbstractLoader
 {
     protected function getDirectory()
     {
-        return 'events';
+        return 'speakers';
     }
 }

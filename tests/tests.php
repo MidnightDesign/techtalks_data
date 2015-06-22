@@ -18,7 +18,7 @@ function run()
         $fs = makeFilesystem();
 
         $videoLoader = new VideoLoader($fs);
-        $videoTest = new VideoTest($fs, new EventLoader($fs));
+        $videoTest = new VideoTest($fs, new EventLoader($fs), new SpeakerLoader($fs));
         $videoTest->idsAreUnique($videoLoader->getFiles());
         foreach ($videoLoader->getFiles() as $file) {
             $videoTest->testVideo($file);
