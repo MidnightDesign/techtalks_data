@@ -1,0 +1,18 @@
+{
+    "url": "https://www.youtube.com/watch?v=DlgadZLOK-M",
+    "name": "Why Your Test Suite Sucks",
+    "event": "php-uk-conference-2015",
+    "speakers": [
+        "mcnulty-ciaran"
+    ],
+    "tags": [
+        "unit-testing",
+        "testing",
+        "php"
+    ],
+    "recorded_at": "2015-02-20T16:00",
+    "uploaded_at": "2015-04-01",
+    "duration": "56m53s",
+    "poster": "https://i.ytimg.com/vi/DlgadZLOK-M/maxresdefault.jpg",
+    "id": "php-uk-conference-2015-why-your-test-suite-sucks"
+}
