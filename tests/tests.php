@@ -13,11 +13,13 @@ function run()
 {
     try {
         chdir(dirname(__DIR__));
+        /** @noinspection PhpIncludeInspection */
         require_once './vendor/autoload.php';
         $fs = makeFilesystem();
 
         $videoLoader = new VideoLoader($fs);
         $videoTest = new VideoTest($fs, new EventLoader($fs));
+        $videoTest->idsAreUnique($videoLoader->getFiles());
         foreach ($videoLoader->getFiles() as $file) {
             $videoTest->testVideo($file);
         }
