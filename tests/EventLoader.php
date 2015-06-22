@@ -2,29 +2,8 @@
 
 namespace TechtalksTest;
 
-use League\Flysystem\Filesystem;
-
-class EventLoader
+class EventLoader extends AbstractLoader
 {
-    /**
-     * @var Filesystem
-     */
-    private $fs;
-    /**
-     * @var array
-     */
-    private $files;
-
-    /**
-     * Video constructor.
-     *
-     * @param Filesystem $fs
-     */
-    public function __construct(Filesystem $fs)
-    {
-        $this->fs = $fs;
-    }
-
     /**
      * @param string $id
      * @return boolean
@@ -40,14 +19,8 @@ class EventLoader
         return false;
     }
 
-    /**
-     * @return array
-     */
-    private function getFiles()
+    protected function getDirectory()
     {
-        if (!$this->files) {
-            $this->files = $this->fs->listFiles('events', true);
-        }
-        return $this->files;
+        return 'events';
     }
 }

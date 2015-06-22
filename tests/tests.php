@@ -15,9 +15,10 @@ function run()
         chdir(dirname(__DIR__));
         require_once './vendor/autoload.php';
         $fs = makeFilesystem();
-        $files = getVideoFiles($fs);
+
+        $videoLoader = new VideoLoader($fs);
         $videoTest = new VideoTest($fs, new EventLoader($fs));
-        foreach ($files as $file) {
+        foreach ($videoLoader->getFiles() as $file) {
             $videoTest->testVideo($file);
         }
     } catch (\PHPUnit_Framework_AssertionFailedError $e) {
@@ -27,15 +28,6 @@ function run()
         return 1;
     }
     return 0;
-}
-
-/**
- * @param Filesystem $fs
- * @return mixed
- */
-function getVideoFiles($fs)
-{
-    return $fs->listFiles('videos', true);
 }
 
 /**
