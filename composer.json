@@ -1,0 +1,21 @@
+{
+    "name": "midnight/techtalks_data",
+    "description": "A repository of tech talk recordings",
+    "minimum-stability": "stable",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Rudolph Gottesheim",
+            "email": "r.gottesheim@loot.at"
+        }
+    ],
+    "require": {
+        "league/flysystem": "~1.0",
+        "phpunit/phpunit": "~4.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "TechtalksTest\\": "./tests"
+        }
+    }
+}
