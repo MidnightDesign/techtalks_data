@@ -50,6 +50,7 @@ class VideoTest extends AbstractTest
         $this->assertEventExists($file);
         $this->assertSpeakersExist($file);
         $this->assertLengthIsValid($file);
+        $this->assertHasName($file);
     }
 
     /**
@@ -98,5 +99,13 @@ class VideoTest extends AbstractTest
     private function assertLengthIsValid(array $file)
     {
         PHPUnit_Framework_Assert::assertRegExp('/((\d{1,2}h)?\d{1,2}m)?\d{1,2}s/', $file['data']['duration']);
+    }
+
+    private function assertHasName(array $file)
+    {
+        PHPUnit_Framework_Assert::assertNotEmpty(
+            $file['data']['name'],
+            sprintf('%s doesn\'t have a name.', $file['path'])
+        );
     }
 }
