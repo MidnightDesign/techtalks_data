@@ -1,0 +1,17 @@
+{
+    "url": "https://www.youtube.com/watch?v=mNFKZeYRdto",
+    "name": "Composer Best Practices",
+    "event": "php-uk-conference-2015",
+    "speakers": [
+        "boggiano-jordi"
+    ],
+    "tags": [
+        "composer-php",
+        "php"
+    ],
+    "recorded_at": "2015-02-19T11:30",
+    "uploaded_at": "2015-04-01",
+    "duration": "46m23s",
+    "poster": "https://i.ytimg.com/vi/mNFKZeYRdto/maxresdefault.jpg",
+    "id": "php-uk-conference-2015-composer-best-practices"
+}
