@@ -1,6 +1,6 @@
 <?php
 
-namespace TechtalksTest;
+namespace Lighwand\Validate\Loader;
 
 use League\Flysystem\Filesystem;
 
@@ -30,6 +30,9 @@ abstract class AbstractLoader
     {
         if (!$this->files) {
             $this->files = $this->fs->listFiles($this->getDirectory(), true);
+            foreach ($this->files as &$file) {
+                $this->addData($file);
+            }
         }
         return $this->files;
     }
@@ -49,5 +52,15 @@ abstract class AbstractLoader
             }
         }
         return false;
+    }
+
+    /**
+     * Populates the "data" key with the file's JSON data
+     *
+     * @param array $file
+     */
+    private function addData(array &$file)
+    {
+        $file['data'] = json_decode($this->fs->read($file['path']), true);
     }
 }

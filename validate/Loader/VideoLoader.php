@@ -1,6 +1,6 @@
 <?php
 
-namespace TechtalksTest;
+namespace Lighwand\Validate\Loader;
 
 class VideoLoader extends AbstractLoader
 {

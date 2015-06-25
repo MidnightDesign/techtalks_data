@@ -10,12 +10,12 @@
         }
     ],
     "require": {
-        "league/flysystem": "~1.0",
-        "phpunit/phpunit": "~4.7"
+        "league/flysystem": "^1.0",
+        "zendframework/zend-validator": "^2.5.1"
     },
     "autoload": {
         "psr-4": {
-            "TechtalksTest\\": "./tests"
+            "Lighwand\\Validate\\": "./validate"
         }
     }
 }

@@ -1,3 +1,3 @@
 language: php
 install: composer install
-script: php ./tests/tests.php
+script: php ./validate.php
