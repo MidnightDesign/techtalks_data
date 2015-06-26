@@ -61,6 +61,12 @@ abstract class AbstractLoader
      */
     private function addData(array &$file)
     {
-        $file['data'] = json_decode($this->fs->read($file['path']), true);
+        $data = json_decode($this->fs->read($file['path']), true);
+        if ($data === null) {
+            throw new \DomainException(
+                sprintf('%s is not a valid JSON file.', $file['path'])
+            );
+        }
+        $file['data'] = $data;
     }
 }

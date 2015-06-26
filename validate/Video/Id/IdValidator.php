@@ -11,7 +11,7 @@ class IdValidator extends ValidatorChain
     {
         parent::__construct();
 
-        $this->attach(new IdExists());
+        $this->attach(new IdExists(), true);
         $this->attach(new IdMatchesFileName());
     }
 }

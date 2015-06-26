@@ -1,19 +1,31 @@
 <?php
 
-require_once __DIR__ . '/vendor/autoload.php';
+namespace Lighwand\Validate;
 
-$fs = new \League\Flysystem\Filesystem(new \League\Flysystem\Adapter\Local(__DIR__));
-$fs->addPlugin(new \League\Flysystem\Plugin\ListFiles());
+use Lighwand\Validate\Loader\VideoLoader;
+use Lighwand\Validate\Video\VideoValidator;
+use Zend\ServiceManager\Config;
+use Zend\ServiceManager\ServiceManager;
 
-$return = 0;
+try {
+    require_once __DIR__ . '/vendor/autoload.php';
 
-$videoValidator = new \Lighwand\Validate\VideoValidator();
-$videoFiles = (new \Lighwand\Validate\Loader\VideoLoader($fs))->getFiles();
-foreach ($videoFiles as $file) {
-    if (!$videoValidator->isValid($file)) {
-        $return = 1;
-        echo join(PHP_EOL, $videoValidator->getMessages()) . PHP_EOL;
+    $config = include __DIR__ . '/validate/config.php';
+    $serviceManager = new ServiceManager(new Config($config['services']));
+
+    $return = 0;
+
+    $videoValidator = $serviceManager->get(VideoValidator::class);
+    $videoFiles = $serviceManager->get(VideoLoader::class)->getFiles();
+    foreach ($videoFiles as $file) {
+        if (!$videoValidator->isValid($file)) {
+            $return = 1;
+            echo join(PHP_EOL, $videoValidator->getMessages()) . PHP_EOL;
+        }
     }
-}
 
-return $return;
+    return $return;
+} catch (\Exception $e) {
+    echo $e->getMessage();
+    return 1;
+}

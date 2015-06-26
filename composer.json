@@ -11,7 +11,8 @@
     ],
     "require": {
         "league/flysystem": "^1.0",
-        "zendframework/zend-validator": "^2.5.1"
+        "zendframework/zend-validator": "^2.5.1",
+        "zendframework/zend-servicemanager": "^2.5.1"
     },
     "autoload": {
         "psr-4": {
