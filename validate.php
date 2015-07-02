@@ -24,6 +24,12 @@ try {
         }
     }
 
+    if ($return === 0) {
+        echo 'Everything is valid!' . PHP_EOL;
+    } else {
+        echo 'Invalid data found.' . PHP_EOL;
+    }
+
     return $return;
 } catch (\Exception $e) {
     echo $e->getMessage();
