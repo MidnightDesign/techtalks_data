@@ -33,6 +33,9 @@ class ValidatorFactory implements AbstractFactoryInterface
         $validator = new ValidatorChain();
         foreach ($config as $key => $val) {
             $breakChainOnFailure = false;
+            if ($key === 'required') {
+                continue;
+            }
             if (is_string($key) && class_exists($key)) {
                 if (isset($val['break']) || is_int($key)) {
                     $breakChainOnFailure = $val['break'];
@@ -40,6 +43,9 @@ class ValidatorFactory implements AbstractFactoryInterface
                 $childValidator = $this->service($key, $serviceLocator);
             } elseif (is_array($val)) {
                 $childValidator = $this->create($val, $serviceLocator);
+                if (!isset($val['required']) || $val['required'] !== false) {
+                    $childValidator->attach(new FieldExists($key), true, 2);
+                }
             } else {
                 $childValidator = $this->service($val, $serviceLocator);
             }

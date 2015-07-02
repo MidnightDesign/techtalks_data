@@ -6,21 +6,21 @@ use League\Flysystem\Adapter\Local;
 use League\Flysystem\Filesystem;
 use League\Flysystem\Plugin\ListFiles;
 use Lighwand\Validate\Loader\VideoLoader;
-use Lighwand\Validate\Video\Id\IdExists;
 use Lighwand\Validate\Video\Id\IdMatchesFileName;
-use Lighwand\Validate\Video\Name\NameExists;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
 return [
     'validators' => [
         'video' => [
-            'id' => [
-                IdExists::class => ['break' => true],
-                IdMatchesFileName::class,
-            ],
-            'name' => [
-                NameExists::class,
-            ],
+            'id' => [IdMatchesFileName::class],
+            'name' => [],
+            'event' => [],
+            'speakers' => [],
+            'tags' => ['required' => false],
+            'recorded_at' => [],
+            'uploaded_at' => [],
+            'duration' => [],
+            'poster' => [],
         ]
     ],
     'services' => [
@@ -41,9 +41,7 @@ return [
             },
         ],
         'invokables' => [
-            IdExists::class => IdExists::class,
             IdMatchesFileName::class => IdMatchesFileName::class,
-            NameExists::class => NameExists::class,
         ],
         'abstract_factories' => [
             ValidatorFactory::class,
