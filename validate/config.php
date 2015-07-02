@@ -6,16 +6,22 @@ use League\Flysystem\Adapter\Local;
 use League\Flysystem\Filesystem;
 use League\Flysystem\Plugin\ListFiles;
 use Lighwand\Validate\Loader\VideoLoader;
-use Lighwand\Validate\Video\Id\IdValidator;
-use Lighwand\Validate\Video\Name\NameValidator;
-use Lighwand\Validate\Video\VideoValidator;
-use Lighwand\Validate\Video\VideoValidatorFactory;
+use Lighwand\Validate\Video\Id\IdExists;
+use Lighwand\Validate\Video\Id\IdMatchesFileName;
+use Lighwand\Validate\Video\Name\NameExists;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
 return [
-    'video_validators' => [
-        IdValidator::class,
-        NameValidator::class,
+    'validators' => [
+        'video' => [
+            'id' => [
+                IdExists::class => ['break' => true],
+                IdMatchesFileName::class,
+            ],
+            'name' => [
+                NameExists::class,
+            ],
+        ]
     ],
     'services' => [
         'factories' => [
@@ -33,11 +39,14 @@ return [
                 $filesystem = $sl->get(Filesystem::class);
                 return new VideoLoader($filesystem);
             },
-            VideoValidator::class => VideoValidatorFactory::class,
         ],
         'invokables' => [
-            IdValidator::class => IdValidator::class,
-            NameValidator::class => NameValidator::class,
-        ]
+            IdExists::class => IdExists::class,
+            IdMatchesFileName::class => IdMatchesFileName::class,
+            NameExists::class => NameExists::class,
+        ],
+        'abstract_factories' => [
+            ValidatorFactory::class,
+        ],
     ],
 ];

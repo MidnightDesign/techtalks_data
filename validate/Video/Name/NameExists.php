@@ -1,6 +1,6 @@
 <?php
 
-namespace Lighwand\validate\Video\Name;
+namespace Lighwand\Validate\Video\Name;
 
 use Zend\Validator\AbstractValidator;
 use Zend\Validator\Exception;

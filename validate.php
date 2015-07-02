@@ -3,7 +3,6 @@
 namespace Lighwand\Validate;
 
 use Lighwand\Validate\Loader\VideoLoader;
-use Lighwand\Validate\Video\VideoValidator;
 use Zend\ServiceManager\Config;
 use Zend\ServiceManager\ServiceManager;
 
@@ -15,7 +14,7 @@ try {
 
     $return = 0;
 
-    $videoValidator = $serviceManager->get(VideoValidator::class);
+    $videoValidator = $serviceManager->get('video');
     $videoFiles = $serviceManager->get(VideoLoader::class)->getFiles();
     foreach ($videoFiles as $file) {
         if (!$videoValidator->isValid($file)) {
