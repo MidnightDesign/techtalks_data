@@ -5,8 +5,10 @@ namespace Lighwand\Validate;
 use League\Flysystem\Adapter\Local;
 use League\Flysystem\Filesystem;
 use League\Flysystem\Plugin\ListFiles;
+use Lighwand\Validate\Loader\SpeakerLoader;
 use Lighwand\Validate\Loader\VideoLoader;
 use Lighwand\Validate\Video\Id\IdMatchesFileName;
+use Lighwand\Validate\Video\Speaker\SpeakersExists;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
 return [
@@ -15,7 +17,7 @@ return [
             'id' => [IdMatchesFileName::class],
             'name' => [],
             'event' => [],
-            'speakers' => [],
+            'speakers' => [SpeakersExists::class],
             'tags' => ['required' => false],
             'recorded_at' => [],
             'uploaded_at' => [],
@@ -39,6 +41,16 @@ return [
                 $filesystem = $sl->get(Filesystem::class);
                 return new VideoLoader($filesystem);
             },
+            SpeakersExists::class => function (ServiceLocatorInterface $sl) {
+                /** @var SpeakerLoader $speakerLoader */
+                $speakerLoader = $sl->get(SpeakerLoader::class);
+                return new SpeakersExists($speakerLoader);
+            },
+            SpeakerLoader::class => function (ServiceLocatorInterface $sl) {
+                /** @var Filesystem $filesystem */
+                $filesystem = $sl->get(Filesystem::class);
+                return new SpeakerLoader($filesystem);
+            }
         ],
         'invokables' => [
             IdMatchesFileName::class => IdMatchesFileName::class,
