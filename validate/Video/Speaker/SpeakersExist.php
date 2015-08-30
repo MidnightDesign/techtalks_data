@@ -6,7 +6,7 @@ use Lighwand\Validate\Loader\SpeakerLoader;
 use Zend\Validator\AbstractValidator;
 use Zend\Validator\Exception;
 
-class SpeakersExists extends AbstractValidator
+class SpeakersExist extends AbstractValidator
 {
     const DOES_NOT_EXIST = 'doesNotExist';
     protected $messageTemplates = [
@@ -24,7 +24,7 @@ class SpeakersExists extends AbstractValidator
     private $speakerLoader;
 
     /**
-     * SpeakersExists constructor.
+     * SpeakersExist constructor.
      *
      * @param SpeakerLoader $speakerLoader
      */

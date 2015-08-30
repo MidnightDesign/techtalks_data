@@ -10,7 +10,7 @@ use Lighwand\Validate\Loader\SpeakerLoader;
 use Lighwand\Validate\Loader\VideoLoader;
 use Lighwand\Validate\Video\Event\EventExists;
 use Lighwand\Validate\Video\Id\IdMatchesFileName;
-use Lighwand\Validate\Video\Speaker\SpeakersExists;
+use Lighwand\Validate\Video\Speaker\SpeakersExist;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
 return [
@@ -19,7 +19,7 @@ return [
             'id' => [IdMatchesFileName::class],
             'name' => [],
             'event' => [EventExists::class],
-            'speakers' => [SpeakersExists::class],
+            'speakers' => [SpeakersExist::class],
             'tags' => ['required' => false],
             'recorded_at' => [],
             'uploaded_at' => [],
@@ -43,10 +43,10 @@ return [
                 $filesystem = $sl->get(Filesystem::class);
                 return new VideoLoader($filesystem);
             },
-            SpeakersExists::class => function (ServiceLocatorInterface $sl) {
+            SpeakersExist::class => function (ServiceLocatorInterface $sl) {
                 /** @var SpeakerLoader $speakerLoader */
                 $speakerLoader = $sl->get(SpeakerLoader::class);
-                return new SpeakersExists($speakerLoader);
+                return new SpeakersExist($speakerLoader);
             },
             SpeakerLoader::class => function (ServiceLocatorInterface $sl) {
                 /** @var Filesystem $filesystem */
