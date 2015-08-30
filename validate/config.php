@@ -20,7 +20,7 @@ return [
             'recorded_at' => [],
             'uploaded_at' => [],
             'duration' => [],
-            'poster' => [],
+            'poster' => ['required' => false],
         ]
     ],
     'services' => [

@@ -10,7 +10,7 @@ class FieldExists extends AbstractValidator
     const DOES_NOT_EXIST = 'doesNotExist';
     /** @var array */
     protected $messageTemplates = [
-        self::DOES_NOT_EXIST => '"%file%" is missing the field "%fieldName%".',
+        self::DOES_NOT_EXIST => '"%file%" is missing the required field "%fieldName%".',
     ];
     protected $messageVariables = [
         'file' => 'file',
