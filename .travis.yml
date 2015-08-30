@@ -1,3 +1,4 @@
 language: php
 install: composer install
 script: php ./validate.php
+sudo: false
