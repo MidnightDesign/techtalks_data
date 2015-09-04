@@ -1,9 +1,9 @@
 {
     "url": "https://www.youtube.com/watch?v=JV7fiM8r3nc",
     "name": "Beyond Design Patterns",
-    "event": "php-nw-conference-2014",
+    "event": "php-north-west-conference-2014",
     "speakers": [
-        "anthony-ferrara"
+        "ferrara-anthony"
     ],
     "tags": [
         "design-patterns",
@@ -13,5 +13,5 @@
     "uploaded_at": "2015-01-29",
     "duration": "49m23s",
     "poster": "https://i.ytimg.com/vi/JV7fiM8r3nc/maxresdefault.jpg",
-    "id": "php-nw-conference-2014-beyond-design-patterns"
+    "id": "php-north-west-conference-2014-beyond-design-patterns"
 }
