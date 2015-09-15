@@ -1,0 +1,16 @@
+{
+    "url": "https://www.youtube.com/watch?v=wgdBVIX9ifA",
+    "name": "Microservices",
+    "event": "goto-berlin-2014",
+    "speakers": [
+        "fowler-martin"
+    ],
+    "tags": [
+        "microservices"
+    ],
+    "recorded_at": "2014-11-06T09:00",
+    "uploaded_at": "2015-01-15",
+    "duration": "26m25s",
+    "poster": "https://i.ytimg.com/vi/wgdBVIX9ifA/maxresdefault.jpg",
+    "id": "goto-berlin-2014-microservices"
+}
