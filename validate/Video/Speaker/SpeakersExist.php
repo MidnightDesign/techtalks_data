@@ -52,7 +52,7 @@ class SpeakersExist extends AbstractValidator
         foreach ($data['speakers'] as $speakerId) {
             if (!$this->speakerLoader->exists($speakerId)) {
                 $this->id = $speakerId;
-                $this->path = $file['path'];
+                $this->path = $file->getPath();
                 $this->error(self::DOES_NOT_EXIST);
                 $isValid = false;
             }

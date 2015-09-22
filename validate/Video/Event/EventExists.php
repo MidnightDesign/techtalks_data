@@ -50,7 +50,7 @@ class EventExists extends AbstractValidator
         $eventId = $this->getData($file)['event'];
         if (!$this->eventLoader->exists($eventId)) {
             $this->id = $eventId;
-            $this->path = $file['path'];
+            $this->path = $file->getPath();
             $this->error(self::DOES_NOT_EXIST);
             return false;
         }
