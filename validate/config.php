@@ -8,6 +8,7 @@ use League\Flysystem\Plugin\ListFiles;
 use Lighwand\Validate\Loader\EventLoader;
 use Lighwand\Validate\Loader\SpeakerLoader;
 use Lighwand\Validate\Loader\VideoLoader;
+use Lighwand\Validate\Video\Duration\DurationFormat;
 use Lighwand\Validate\Video\Event\EventExists;
 use Lighwand\Validate\Video\Id\IdMatchesFileName;
 use Lighwand\Validate\Video\Speaker\SpeakersExist;
@@ -19,6 +20,7 @@ return [
             IdMatchesFileName::class,
             EventExists::class,
             SpeakersExist::class,
+            DurationFormat::class,
         ]
     ],
     'services' => [
@@ -65,6 +67,11 @@ return [
                 /** @var DataExtractor $dataExtractor */
                 $dataExtractor = $sl->get(DataExtractor::class);
                 return new IdMatchesFileName($dataExtractor);
+            },
+            DurationFormat::class => function (ServiceLocatorInterface $sl) {
+                /** @var DataExtractor $dataExtractor */
+                $dataExtractor = $sl->get(DataExtractor::class);
+                return new DurationFormat($dataExtractor);
             },
         ],
         'invokables' => [
