@@ -3,41 +3,18 @@
 namespace Lighwand\Validate\Loader;
 
 use League\Flysystem\Filesystem;
+use Lighwand\Validate\File;
 
 abstract class AbstractLoader
 {
-    /**
-     * @var Filesystem
-     */
+    /** @var Filesystem */
     protected $fs;
-    /**
-     * @var array
-     */
-    private $files;
 
-    /**
-     * @param Filesystem $fs
-     */
+    /** @param Filesystem $fs */
     public function __construct(Filesystem $fs)
     {
         $this->fs = $fs;
     }
-
-    /**
-     * @return array
-     */
-    public function getFiles()
-    {
-        if (!$this->files) {
-            $this->files = $this->fs->listFiles($this->getDirectory(), true);
-            foreach ($this->files as &$file) {
-                $this->addData($file);
-            }
-        }
-        return $this->files;
-    }
-
-    abstract protected function getDirectory();
 
     /**
      * @param string $id
@@ -47,7 +24,7 @@ abstract class AbstractLoader
     {
         $files = $this->getFiles();
         foreach ($files as $file) {
-            if ($file['filename'] === $id) {
+            if ($file->getFileName() === $id) {
                 return true;
             }
         }
@@ -55,18 +32,16 @@ abstract class AbstractLoader
     }
 
     /**
-     * Populates the "data" key with the file's JSON data
-     *
-     * @param array $file
+     * @return File[]
      */
-    private function addData(array &$file)
+    public function getFiles()
     {
-        $data = json_decode($this->fs->read($file['path']), true);
-        if ($data === null) {
-            throw new \DomainException(
-                sprintf('%s is not a valid JSON file.', $file['path'])
-            );
-        }
-        $file['data'] = $data;
+        $fileData = $this->fs->listFiles($this->getDirectory(), true);
+        $filesystem = $this->fs;
+        return array_map(function ($data) use ($filesystem) {
+            return new File($filesystem, $data['path']);
+        }, $fileData);
     }
+
+    abstract protected function getDirectory();
 }

@@ -14,8 +14,8 @@ class ValidatorFactory implements AbstractFactoryInterface
      * Create service with name
      *
      * @param ServiceLocatorInterface $serviceLocator
-     * @param $name
-     * @param $requestedName
+     * @param                         $name
+     * @param                         $requestedName
      * @return mixed
      */
     public function createServiceWithName(ServiceLocatorInterface $serviceLocator, $name, $requestedName)
@@ -30,28 +30,11 @@ class ValidatorFactory implements AbstractFactoryInterface
      */
     private function create(array $config, ServiceLocatorInterface $serviceLocator)
     {
-        $validator = new ValidatorChain();
-        foreach ($config as $key => $val) {
-            $breakChainOnFailure = false;
-            if ($key === 'required') {
-                continue;
-            }
-            if (is_string($key) && class_exists($key)) {
-                if (isset($val['break']) || is_int($key)) {
-                    $breakChainOnFailure = $val['break'];
-                }
-                $childValidator = $this->service($key, $serviceLocator);
-            } elseif (is_array($val)) {
-                $childValidator = $this->create($val, $serviceLocator);
-                if (!isset($val['required']) || $val['required'] !== false) {
-                    $childValidator->attach(new FieldExists($key), true, 2);
-                }
-            } else {
-                $childValidator = $this->service($val, $serviceLocator);
-            }
-            $validator->attach($childValidator, $breakChainOnFailure);
+        $validatorChain = new ValidatorChain();
+        foreach ($config as $validator) {
+            $validatorChain->attach($this->getValidator($validator, $serviceLocator));
         }
-        return $validator;
+        return $validatorChain;
     }
 
     /**
@@ -59,7 +42,7 @@ class ValidatorFactory implements AbstractFactoryInterface
      * @param ServiceLocatorInterface $serviceLocator
      * @return ValidatorInterface
      */
-    private function service($name, ServiceLocatorInterface $serviceLocator)
+    private function getValidator($name, ServiceLocatorInterface $serviceLocator)
     {
         $validator = $serviceLocator->get($name);
         if (!$validator instanceof ValidatorInterface) {
@@ -83,8 +66,8 @@ class ValidatorFactory implements AbstractFactoryInterface
      * Determine if we can create a service with name
      *
      * @param ServiceLocatorInterface $serviceLocator
-     * @param $name
-     * @param $requestedName
+     * @param                         $name
+     * @param                         $requestedName
      * @return bool
      */
     public function canCreateServiceWithName(ServiceLocatorInterface $serviceLocator, $name, $requestedName)

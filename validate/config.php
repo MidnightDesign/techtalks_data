@@ -16,15 +16,9 @@ use Zend\ServiceManager\ServiceLocatorInterface;
 return [
     'validators' => [
         'video' => [
-            'id' => [IdMatchesFileName::class],
-            'name' => [],
-            'event' => [EventExists::class],
-            'speakers' => [SpeakersExist::class],
-            'tags' => ['required' => false],
-            'recorded_at' => [],
-            'uploaded_at' => [],
-            'duration' => [],
-            'poster' => ['required' => false],
+            IdMatchesFileName::class,
+            EventExists::class,
+            SpeakersExist::class,
         ]
     ],
     'services' => [
@@ -46,7 +40,9 @@ return [
             SpeakersExist::class => function (ServiceLocatorInterface $sl) {
                 /** @var SpeakerLoader $speakerLoader */
                 $speakerLoader = $sl->get(SpeakerLoader::class);
-                return new SpeakersExist($speakerLoader);
+                /** @var DataExtractor $dataExtractor */
+                $dataExtractor = $sl->get(DataExtractor::class);
+                return new SpeakersExist($speakerLoader, $dataExtractor);
             },
             SpeakerLoader::class => function (ServiceLocatorInterface $sl) {
                 /** @var Filesystem $filesystem */
@@ -56,16 +52,23 @@ return [
             EventExists::class => function (ServiceLocatorInterface $sl) {
                 /** @var EventLoader $eventLoader */
                 $eventLoader = $sl->get(EventLoader::class);
-                return new EventExists($eventLoader);
+                /** @var DataExtractor $dataExtractor */
+                $dataExtractor = $sl->get(DataExtractor::class);
+                return new EventExists($eventLoader, $dataExtractor);
             },
             EventLoader::class => function (ServiceLocatorInterface $sl) {
                 /** @var Filesystem $filesystem */
                 $filesystem = $sl->get(Filesystem::class);
                 return new EventLoader($filesystem);
-            }
+            },
+            IdMatchesFileName::class => function (ServiceLocatorInterface $sl) {
+                /** @var DataExtractor $dataExtractor */
+                $dataExtractor = $sl->get(DataExtractor::class);
+                return new IdMatchesFileName($dataExtractor);
+            },
         ],
         'invokables' => [
-            IdMatchesFileName::class => IdMatchesFileName::class,
+            DataExtractor::class => DataExtractor::class,
         ],
         'abstract_factories' => [
             ValidatorFactory::class,
