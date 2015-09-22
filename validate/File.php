@@ -18,6 +18,7 @@ class File extends LeagueFile
      */
     public function getBaseName()
     {
-        return array_pop(explode('/', $this->path));
+        $parts = explode('/', $this->path);
+        return array_pop($parts);
     }
 }
