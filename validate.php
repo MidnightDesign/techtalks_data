@@ -2,10 +2,6 @@
 
 namespace Lighwand\Validate;
 
-use Lighwand\Validate\Loader\EventLoader;
-use Lighwand\Validate\Loader\EventSeriesLoader;
-use Lighwand\Validate\Loader\SpeakerLoader;
-use Lighwand\Validate\Loader\VideoLoader;
 use Zend\ServiceManager\Config;
 use Zend\ServiceManager\ServiceManager;
 
@@ -17,15 +13,10 @@ try {
 
     $return = 0;
 
-    $types = [
-        ['service' => 'video', 'loader' => VideoLoader::class],
-        ['service' => 'event', 'loader' => EventLoader::class],
-        ['service' => 'event_series', 'loader' => EventSeriesLoader::class],
-        ['service' => 'speaker', 'loader' => SpeakerLoader::class],
-    ];
+    $types = ['video', 'event', 'event_series', 'speaker'];
     foreach ($types as $type) {
-        $validator = $serviceManager->get($type['service']);
-        $files = $serviceManager->get($type['loader'])->getFiles();
+        $validator = $serviceManager->get($type);
+        $files = $serviceManager->get($type . '_loader')->getFiles();
         foreach ($files as $file) {
             if (!$validator->isValid($file)) {
                 $return = 1;

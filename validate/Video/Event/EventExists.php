@@ -5,7 +5,7 @@ namespace Lighwand\Validate\Video\Event;
 use Lighwand\Validate\DataExtractor;
 use Lighwand\Validate\DataExtractorAwareTrait;
 use Lighwand\Validate\File;
-use Lighwand\Validate\Loader\EventLoader;
+use Lighwand\Validate\Loader\LoaderInterface;
 use Zend\Validator\AbstractValidator;
 use Zend\Validator\Exception;
 
@@ -24,16 +24,16 @@ class EventExists extends AbstractValidator
     protected $path;
     /** @var string */
     protected $id;
-    /** @var EventLoader */
+    /** @var LoaderInterface */
     private $eventLoader;
 
     /**
      * EventExists constructor.
      *
-     * @param EventLoader   $eventLoader
-     * @param DataExtractor $dataExtractor
+     * @param LoaderInterface $eventLoader
+     * @param DataExtractor   $dataExtractor
      */
-    public function __construct(EventLoader $eventLoader, DataExtractor $dataExtractor)
+    public function __construct(LoaderInterface $eventLoader, DataExtractor $dataExtractor)
     {
         parent::__construct();
         $this->eventLoader = $eventLoader;

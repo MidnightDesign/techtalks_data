@@ -5,7 +5,7 @@ namespace Lighwand\Validate\Video\Speaker;
 use Lighwand\Validate\DataExtractor;
 use Lighwand\Validate\DataExtractorAwareTrait;
 use Lighwand\Validate\File;
-use Lighwand\Validate\Loader\SpeakerLoader;
+use Lighwand\Validate\Loader\LoaderInterface;
 use Zend\Validator\AbstractValidator;
 use Zend\Validator\Exception;
 
@@ -24,16 +24,16 @@ class SpeakersExist extends AbstractValidator
     protected $path;
     /** @var string */
     protected $id;
-    /** @var SpeakerLoader */
+    /** @var LoaderInterface */
     private $speakerLoader;
 
     /**
      * SpeakersExist constructor.
      *
-     * @param SpeakerLoader $speakerLoader
-     * @param DataExtractor $dataExtractor
+     * @param LoaderInterface $speakerLoader
+     * @param DataExtractor   $dataExtractor
      */
-    public function __construct(SpeakerLoader $speakerLoader, DataExtractor $dataExtractor)
+    public function __construct(LoaderInterface $speakerLoader, DataExtractor $dataExtractor)
     {
         parent::__construct();
         $this->speakerLoader = $speakerLoader;

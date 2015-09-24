@@ -5,15 +5,21 @@ namespace Lighwand\Validate\Loader;
 use League\Flysystem\Filesystem;
 use Lighwand\Validate\File;
 
-abstract class AbstractLoader
+class Loader implements LoaderInterface
 {
     /** @var Filesystem */
     protected $fs;
+    /** @var string */
+    private $directory;
 
-    /** @param Filesystem $fs */
-    public function __construct(Filesystem $fs)
+    /**
+     * @param Filesystem $fs
+     * @param string     $directory
+     */
+    public function __construct(Filesystem $fs, $directory)
     {
         $this->fs = $fs;
+        $this->directory = $directory;
     }
 
     /**
@@ -36,12 +42,10 @@ abstract class AbstractLoader
      */
     public function getFiles()
     {
-        $fileData = $this->fs->listFiles($this->getDirectory(), true);
+        $fileData = $this->fs->listFiles($this->directory, true);
         $filesystem = $this->fs;
         return array_map(function ($data) use ($filesystem) {
             return new File($filesystem, $data['path']);
         }, $fileData);
     }
-
-    abstract protected function getDirectory();
 }
