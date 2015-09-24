@@ -8,7 +8,6 @@ use League\Flysystem\Plugin\ListFiles;
 use Lighwand\Validate\Loader\Loader;
 use Lighwand\Validate\Loader\LoaderInterface;
 use Lighwand\Validate\Video\Duration\DurationFormat;
-use Lighwand\Validate\Video\Id\IdMatchesFileName;
 use Lighwand\Validate\Video\Speaker\SpeakersExist;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
@@ -24,12 +23,15 @@ return [
         'event' => [
             JsonFormat::class,
             'event_series_exists',
+            IdMatchesFileName::class,
         ],
         'event_series' => [
             JsonFormat::class,
+            IdMatchesFileName::class,
         ],
         'speaker' => [
             JsonFormat::class,
+            IdMatchesFileName::class,
         ],
     ],
     'services' => [

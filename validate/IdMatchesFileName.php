@@ -1,10 +1,7 @@
 <?php
 
-namespace Lighwand\Validate\Video\Id;
+namespace Lighwand\Validate;
 
-use Lighwand\Validate\DataExtractor;
-use Lighwand\Validate\DataExtractorAwareTrait;
-use Lighwand\Validate\File;
 use Zend\Validator\AbstractValidator;
 use Zend\Validator\Exception;
 
