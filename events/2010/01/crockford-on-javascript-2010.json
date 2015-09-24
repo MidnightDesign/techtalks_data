@@ -1,6 +1,7 @@
 {
     "id": "crockford-on-javascript-2010",
     "name": "Crockford on JavaScript",
+    "event_series": "crockford-on-javascript",
     "start_date": "2010-06-25",
     "end_date": "2011-11-03"
 }

@@ -1,15 +1,12 @@
 <?php
 
-namespace Lighwand\Validate\Video\Event;
+namespace Lighwand\Validate;
 
-use Lighwand\Validate\DataExtractor;
-use Lighwand\Validate\DataExtractorAwareTrait;
-use Lighwand\Validate\File;
 use Lighwand\Validate\Loader\LoaderInterface;
 use Zend\Validator\AbstractValidator;
 use Zend\Validator\Exception;
 
-class EventExists extends AbstractValidator
+class ReferenceExists extends AbstractValidator
 {
     use DataExtractorAwareTrait;
     const DOES_NOT_EXIST = 'doesNotExist';
@@ -25,19 +22,23 @@ class EventExists extends AbstractValidator
     /** @var string */
     protected $id;
     /** @var LoaderInterface */
-    private $eventLoader;
+    private $loader;
+    /** @var string */
+    private $fieldName;
 
     /**
-     * EventExists constructor.
+     * ReferenceExists constructor.
      *
-     * @param LoaderInterface $eventLoader
+     * @param string          $fieldName
+     * @param LoaderInterface $loader
      * @param DataExtractor   $dataExtractor
      */
-    public function __construct(LoaderInterface $eventLoader, DataExtractor $dataExtractor)
+    public function __construct($fieldName, LoaderInterface $loader, DataExtractor $dataExtractor)
     {
         parent::__construct();
-        $this->eventLoader = $eventLoader;
+        $this->loader = $loader;
         $this->dataExtractor = $dataExtractor;
+        $this->fieldName = $fieldName;
     }
 
     /**
@@ -47,9 +48,9 @@ class EventExists extends AbstractValidator
      */
     public function isValid($file)
     {
-        $eventId = $this->getData($file)['event'];
-        if (!$this->eventLoader->exists($eventId)) {
-            $this->id = $eventId;
+        $id = $this->getData($file)[$this->fieldName];
+        if (!$this->loader->exists($id)) {
+            $this->id = $id;
             $this->path = $file->getPath();
             $this->error(self::DOES_NOT_EXIST);
             return false;

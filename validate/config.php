@@ -8,7 +8,6 @@ use League\Flysystem\Plugin\ListFiles;
 use Lighwand\Validate\Loader\Loader;
 use Lighwand\Validate\Loader\LoaderInterface;
 use Lighwand\Validate\Video\Duration\DurationFormat;
-use Lighwand\Validate\Video\Event\EventExists;
 use Lighwand\Validate\Video\Id\IdMatchesFileName;
 use Lighwand\Validate\Video\Speaker\SpeakersExist;
 use Zend\ServiceManager\ServiceLocatorInterface;
@@ -17,13 +16,14 @@ return [
     'validators' => [
         'video' => [
             IdMatchesFileName::class,
-            EventExists::class,
+            'event_exists',
             SpeakersExist::class,
             DurationFormat::class,
             JsonFormat::class,
         ],
         'event' => [
             JsonFormat::class,
+            'event_series_exists',
         ],
         'event_series' => [
             JsonFormat::class,
@@ -46,7 +46,7 @@ return [
             'video_loader' => function (ServiceLocatorInterface $sl) {
                 /** @var Filesystem $filesystem */
                 $filesystem = $sl->get(Filesystem::class);
-                return new Loader($filesystem, 'video');
+                return new Loader($filesystem, 'videos');
             },
             SpeakersExist::class => function (ServiceLocatorInterface $sl) {
                 /** @var LoaderInterface $speakerLoader */
@@ -58,19 +58,26 @@ return [
             'speaker_loader' => function (ServiceLocatorInterface $sl) {
                 /** @var Filesystem $filesystem */
                 $filesystem = $sl->get(Filesystem::class);
-                return new Loader($filesystem, 'speaker');
+                return new Loader($filesystem, 'speakers');
             },
-            EventExists::class => function (ServiceLocatorInterface $sl) {
-                /** @var LoaderInterface $eventLoader */
-                $eventLoader = $sl->get('event_loader');
+            'event_exists' => function (ServiceLocatorInterface $sl) {
+                /** @var LoaderInterface $loader */
+                $loader = $sl->get('event_loader');
                 /** @var DataExtractor $dataExtractor */
                 $dataExtractor = $sl->get(DataExtractor::class);
-                return new EventExists($eventLoader, $dataExtractor);
+                return new ReferenceExists('event', $loader, $dataExtractor);
+            },
+            'event_series_exists' => function (ServiceLocatorInterface $sl) {
+                /** @var LoaderInterface $loader */
+                $loader = $sl->get('event_series_loader');
+                /** @var DataExtractor $dataExtractor */
+                $dataExtractor = $sl->get(DataExtractor::class);
+                return new ReferenceExists('event_series', $loader, $dataExtractor);
             },
             'event_loader' => function (ServiceLocatorInterface $sl) {
                 /** @var Filesystem $filesystem */
                 $filesystem = $sl->get(Filesystem::class);
-                return new Loader($filesystem, 'event');
+                return new Loader($filesystem, 'events');
             },
             'event_series_loader' => function (ServiceLocatorInterface $sl) {
                 /** @var Filesystem $filesystem */
