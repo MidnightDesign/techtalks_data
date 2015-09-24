@@ -2,8 +2,12 @@
     "id": "crockford-on-javascript-episode-iv-the-metamorphosis-of-ajax",
     "name": "Episode IV: The Metamorphosis of Ajax (Crockford on JavaScript)",
     "url": "https://www.youtube.com/watch?v=Fv9qT9joc0M",
-    "speakers": ["crockford-douglas"],
-    "tags": ["javascript"],
+    "speakers": [
+        "crockford-douglas"
+    ],
+    "tags": [
+        "javascript"
+    ],
     "event": "crockford-on-javascript-2010",
     "recorded_at": "2010-03-03",
     "duration": "1h33m54s",

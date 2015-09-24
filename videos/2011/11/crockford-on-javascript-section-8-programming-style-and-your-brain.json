@@ -2,8 +2,12 @@
     "id": "crockford-on-javascript-section-8-programming-style-and-your-brain",
     "name": "Section 8: Programming Style and Your Brain (Crockford on JavaScript)",
     "url": "https://www.youtube.com/watch?v=taaEzHI9xyY",
-    "speakers": ["crockford-douglas"],
-    "tags": ["javascript"],
+    "speakers": [
+        "crockford-douglas"
+    ],
+    "tags": [
+        "javascript"
+    ],
     "event": "crockford-on-javascript-2010",
     "recorded_at": "2011-11-03",
     "duration": "1h06m45s",

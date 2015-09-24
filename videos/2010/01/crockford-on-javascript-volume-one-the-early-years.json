@@ -2,8 +2,12 @@
     "id": "crockford-on-javascript-volume-one-the-early-years",
     "name": "Volume One: The Early Years (Crockford on JavaScript)",
     "url": "https://www.youtube.com/watch?v=JxAXlJEmNMg",
-    "speakers": ["crockford-douglas"],
-    "tags": ["javascript"],
+    "speakers": [
+        "crockford-douglas"
+    ],
+    "tags": [
+        "javascript"
+    ],
     "event": "crockford-on-javascript-2010",
     "recorded_at": "2010-01-25",
     "duration": "1h42m08s",

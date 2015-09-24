@@ -2,7 +2,9 @@
     "id": "chrome-dev-summit-2014-easy-composition-and-reuse-with-web-components",
     "name": "Easy composition and reuse with Web Components",
     "url": "https://www.youtube.com/watch?v=6vcQlD-jadk",
-    "speakers": ["glazkov-dimitri"],
+    "speakers": [
+        "glazkov-dimitri"
+    ],
     "tags": [
         "web-component"
     ],

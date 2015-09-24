@@ -6,6 +6,7 @@ use League\Flysystem\Adapter\Local;
 use League\Flysystem\Filesystem;
 use League\Flysystem\Plugin\ListFiles;
 use Lighwand\Validate\Loader\EventLoader;
+use Lighwand\Validate\Loader\EventSeriesLoader;
 use Lighwand\Validate\Loader\SpeakerLoader;
 use Lighwand\Validate\Loader\VideoLoader;
 use Lighwand\Validate\Video\Duration\DurationFormat;
@@ -21,7 +22,17 @@ return [
             EventExists::class,
             SpeakersExist::class,
             DurationFormat::class,
-        ]
+            JsonFormat::class,
+        ],
+        'event' => [
+            JsonFormat::class,
+        ],
+        'event_series' => [
+            JsonFormat::class,
+        ],
+        'speaker' => [
+            JsonFormat::class,
+        ],
     ],
     'services' => [
         'factories' => [
@@ -63,6 +74,11 @@ return [
                 $filesystem = $sl->get(Filesystem::class);
                 return new EventLoader($filesystem);
             },
+            EventSeriesLoader::class => function (ServiceLocatorInterface $sl) {
+                /** @var Filesystem $filesystem */
+                $filesystem = $sl->get(Filesystem::class);
+                return new EventSeriesLoader($filesystem);
+            },
             IdMatchesFileName::class => function (ServiceLocatorInterface $sl) {
                 /** @var DataExtractor $dataExtractor */
                 $dataExtractor = $sl->get(DataExtractor::class);
@@ -72,6 +88,11 @@ return [
                 /** @var DataExtractor $dataExtractor */
                 $dataExtractor = $sl->get(DataExtractor::class);
                 return new DurationFormat($dataExtractor);
+            },
+            JsonFormat::class => function (ServiceLocatorInterface $sl) {
+                /** @var DataExtractor $dataExtractor */
+                $dataExtractor = $sl->get(DataExtractor::class);
+                return new JsonFormat($dataExtractor);
             },
         ],
         'invokables' => [

@@ -1,17 +1,17 @@
 {
-  "url": "https://www.youtube.com/watch?v=ZJ63ltuwMaE",
-  "name": "Unbreakable Domain Models",
-  "event": "php-uk-conference-2014",
-  "speakers": [
-    "verraes-mathias"
-  ],
-  "tags": [
-    "php",
-    "domain-model"
-  ],
-  "recorded_at": "2014-02-21T12:00",
-  "uploaded_at": "2014-03-21",
-  "duration": "63m26s",
-  "poster": "https://i.ytimg.com/vi/ZJ63ltuwMaE/maxresdefault.jpg",
-  "id": "php-uk-conference-2014-unbreakable-domain-models"
+    "url": "https://www.youtube.com/watch?v=ZJ63ltuwMaE",
+    "name": "Unbreakable Domain Models",
+    "event": "php-uk-conference-2014",
+    "speakers": [
+        "verraes-mathias"
+    ],
+    "tags": [
+        "php",
+        "domain-model"
+    ],
+    "recorded_at": "2014-02-21T12:00",
+    "uploaded_at": "2014-03-21",
+    "duration": "63m26s",
+    "poster": "https://i.ytimg.com/vi/ZJ63ltuwMaE/maxresdefault.jpg",
+    "id": "php-uk-conference-2014-unbreakable-domain-models"
 }

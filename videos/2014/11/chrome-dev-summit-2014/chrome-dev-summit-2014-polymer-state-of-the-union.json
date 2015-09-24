@@ -2,7 +2,9 @@
     "id": "chrome-dev-summit-2014-polymer-state-of-the-union",
     "name": "Polymer: State of the Union",
     "url": "https://www.youtube.com/watch?v=0LT6W5QVCJI",
-    "speakers": ["mcnulty-matt"],
+    "speakers": [
+        "mcnulty-matt"
+    ],
     "tags": [
         "polymer"
     ],

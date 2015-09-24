@@ -2,8 +2,12 @@
     "id": "crockford-on-javascript-chapter-2-and-then-there-was-javascript",
     "name": "Chapter 2: And Then There Was JavaScript (Crockford on JavaScript)",
     "url": "https://www.youtube.com/watch?v=RO1Wnu-xKoY",
-    "speakers": ["crockford-douglas"],
-    "tags": ["javascript"],
+    "speakers": [
+        "crockford-douglas"
+    ],
+    "tags": [
+        "javascript"
+    ],
     "event": "crockford-on-javascript-2010",
     "recorded_at": "2010-02-05",
     "duration": "1h30m22s",

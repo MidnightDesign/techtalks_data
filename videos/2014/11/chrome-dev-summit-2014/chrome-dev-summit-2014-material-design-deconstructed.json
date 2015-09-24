@@ -2,7 +2,9 @@
     "id": "chrome-dev-summit-2014-material-design-deconstructed",
     "name": "Material Design Deconstructed",
     "url": "https://www.youtube.com/watch?v=tfSiXRy1vEw",
-    "speakers": ["shah-roma"],
+    "speakers": [
+        "shah-roma"
+    ],
     "tags": [
         "material-design"
     ],

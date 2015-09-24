@@ -2,8 +2,12 @@
     "id": "crockford-on-javascript-scene-6-loopage",
     "name": "Scene 6: Loopage (Crockford on JavaScript)",
     "url": "https://www.youtube.com/watch?v=QgwSUtYSUqA",
-    "speakers": ["crockford-douglas"],
-    "tags": ["javascript"],
+    "speakers": [
+        "crockford-douglas"
+    ],
+    "tags": [
+        "javascript"
+    ],
     "event": "crockford-on-javascript-2010",
     "recorded_at": "2010-08-27",
     "duration": "51m52s",
