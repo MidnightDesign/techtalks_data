@@ -1,0 +1,18 @@
+{
+    "url": "https://www.youtube.com/watch?v=K1EJBmwg9EQ",
+    "name": "Hexagonal Architecture - Message-Oriented Software Design",
+    "event": "php-barcelona-2015",
+    "speakers": [
+        "noback-matthias"
+    ],
+    "tags": [
+        "php",
+        "design-patterns",
+        "architecture"
+    ],
+    "recorded_at": "2015-10-30T10:00",
+    "uploaded_at": "2015-12-10",
+    "duration": "53m20s",
+    "poster": "https://i.ytimg.com/vi/K1EJBmwg9EQ/maxresdefault.jpg",
+    "id": "php-barcelona-2015-hexagonal-architecture-message-oriented-software-design"
+}
